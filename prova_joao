@@ -9,7 +9,7 @@ USE prova_joao;
 SET SQL_MODE=""; 
 
 create TABLE pessoa(
-id int(11) primary KEY NOT NULL auto_increment,
+id int(11) primary KEY NOT NULL auto_increment,              
     nome VARCHAR(4000) NOT NULL
     );
 SELECT COUNT(*) FROM pessoa;
@@ -29,3 +29,22 @@ UPDATE pessoa SET nome = 'joao vitor dos santos' WHERE id = 800;
 SELECT id, nome  FROM pessoa  WHERE id = 8;
 
 SELECT id, nome  FROM pessoa  WHERE id = 800;
+
+CREATE TABLE unidade_requisitante (
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  unidade VARCHAR(500) NOT NULL UNIQUE
+);
+alter table unidade_requisitante add column fk_pessoa int(11);
+
+alter table unidade_requisitante add constraint id_fk_pessoa
+foreign key(id) references pessoa (id);
+
+select p.id, p.nome, ur.fk_pessoa, ur.id, ur.unidade from pessoa p
+inner join unidade_requisitante ur
+on p.id = ur.fk_pessoa limit 100;
+
+select p.id, p.nome, ur.fk_pessoa, ur.id, ur.unidade from pessoa p
+inner join unidade_requisitante ur
+on p.id = ur.fk_pessoa WHERE p.id in (8, 80, 800);
+
+DROP TABLE unidade_requisitante;
