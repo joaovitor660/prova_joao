@@ -1,0 +1,31 @@
+use prova_joao;
+
+select count(*) from pessoa;
+
+CREATE database prova_joao;
+
+USE prova_joao;
+
+SET SQL_MODE=""; 
+
+create TABLE pessoa(
+id int(11) primary KEY NOT NULL auto_increment,
+    nome VARCHAR(4000) NOT NULL
+    );
+SELECT COUNT(*) FROM pessoa;
+
+SET SQL_MODE ='STRICT_ALL_TABLES';
+
+SELECT ID, NOME AS quantidade FROM pessoa WHERE id = 8;
+
+SELECT  COUNT(*) from pessoa where nome = 'ISABEL MARIA FARIAS FERNANDES DE OLIVEIRA';
+
+UPDATE pessoa SET nome = 'joao vitor dos santos' WHERE id = 8;
+
+UPDATE pessoa SET nome = 'joao vitor dos santos' WHERE id = 80;
+
+UPDATE pessoa SET nome = 'joao vitor dos santos' WHERE id = 800;
+
+SELECT id, nome  FROM pessoa  WHERE id = 8;
+
+SELECT id, nome  FROM pessoa  WHERE id = 800;
